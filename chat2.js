@@ -9,7 +9,7 @@ clientList = [];
 ChatServer.on('connection', function (client) { //client 就是客户端
     //获取ip地址和端口
     client.name = client.address().address + ':' + client.address().port;
-    console.log(client.name + 'joined');
+    console.log(client.name + 'joined   \n\r');
     clientList.push(client);
     client.write('Welcome to huipo chat server ....  \n'); //client.write()  向客户端输出
 
