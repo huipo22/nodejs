@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mock</title>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <script src="http://requirejs.org/docs/release/2.1.16/comments/require.js"></script>
+</head>
+<body>
+<script>
+    // 配置 Mock 路径
+    require.config({
+        paths: {
+            mock: 'http://mockjs.com/dist/mock'
+        }
+    })
+//    console.log(require(['mock']))
+    // 加载 Mock                      require的加载机制 ---> require(['mock'])
+    require(['mock'], function (Mock) {
+        // Mock.mock( template ) 没有ajax请求时
+//        var data = Mock.mock({
+//            'list|1-10': [{
+//                'id|+1': 1
+//            }]
+//        });
+//        $('<pre>').text(JSON.stringify(data, null, 4))
+//            .appendTo('body')
+
+        // Mock.mock(rurl, template) 有ajax请求时
+        Mock.mock(/\.json/, {
+            'list|1-10': [{
+                'id|+1': 1,
+                'email': '@EMAIL',
+                'regexp3': /\d{5,10}/
+            }]
+        })
+        $.ajax({
+            url: 'hello.json',
+            dataType: 'json'
+        }).done(function (data, status, jqXHR) {
+            $('<pre>').text(JSON.stringify(data, null, 4))
+                .appendTo('body')
+        })
+    })
+
+</script>
+</body>
+</html>
