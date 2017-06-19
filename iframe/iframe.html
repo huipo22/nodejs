@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<iframe id='iframe1' src="demo.html" frameborder="0"></iframe>
+<script>
+    window.onload=function () {
+        var iframe = document.getElementById('iframe1');
+        var iwindow = iframe.contentWindow;
+        var idoc = iwindow.document;
+//        idoc.onclick=function () {
+//            alert(4)
+//        };
+        idoc.onmousemove=function (e) {
+            console.log(e.target)
+        }
+    }
+
+</script>
+</body>
+</html>
