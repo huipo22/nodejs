@@ -7,6 +7,22 @@
     <script src="./dist/index.js"></script>
 </head>
 <body>
-Hello ECMA Script 6
+<h1>Hello ECMA Script 6</h1>
+<bbb></bbb>
+<bbb></bbb>
+<style>
+    bbb{
+        color: red;
+    }
+</style>
+<script>
+    function customTag(tagName,fn) {
+        Array.from(document.getElementsByTagName(tagName)).forEach(fn)
+    }
+    function bbbHandler(ele) {
+        ele.innerHTML='你好，世界'
+    }
+    customTag("bbb",bbbHandler)
+</script>
 </body>
 </html>
